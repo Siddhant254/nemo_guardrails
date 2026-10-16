@@ -1,0 +1,15 @@
+
+define flow self check input
+  $check = execute self_check_input
+  if $check.decision == "block"
+    bot refuse to respond
+    stop
+
+define flow self check output
+  $check = execute self_check_output
+  if $check.decision == "block"
+    bot refuse to respond
+    stop
+
+define bot refuse to respond
+  "I can't help with that request. It violates my safety guidelines."

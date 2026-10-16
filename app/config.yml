@@ -1,0 +1,36 @@
+
+models:
+  - type: main
+    engine: openai
+    model: gpt-4o-mini
+
+rails:
+  input:
+    flows:
+      - self check input
+  output:
+    flows:
+      - self check output
+
+prompts:
+  - task: self_check_input
+    content: |
+      You are a safety classifier.
+      Determine whether the user's message contains unsafe,
+      harmful, or disallowed content.
+
+      User message: "{{ user_input }}"
+
+      Answer with only "Yes" if the message should be blocked.
+      Otherwise, answer with only "No".
+
+  - task: self_check_output
+    content: |
+      You are a safety classifier.
+      Determine whether the assistant's response contains
+      unsafe, harmful, or disallowed content.
+
+      Assistant response: "{{ bot_response }}"
+
+      Answer with only "Yes" if the response should be blocked.
+      Otherwise, answer with only "No".
